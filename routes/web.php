@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
+});
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('todos', 'TodoController')->except(['update', 'edit']);
+    Route::get('todos/complete/{todo}', 'TodoController@complete')->name('todos.complete');
 });
