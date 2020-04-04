@@ -6,18 +6,27 @@ use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class TodoController extends Controller
 {
+    const REQUEST_SEARCH = 'search';
+    const REQUEST_DATE = 'date';
+
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return View
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('todo.list', ['data' => Todo::all()]);
+        $data = Todo::query()
+            ->filterBySearch($request)
+            ->filterByDate($request)
+            ->get();
+        return view('todo.list', compact('data'));
     }
 
     /**

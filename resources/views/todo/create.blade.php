@@ -15,22 +15,24 @@
 
                         <div class="form-group">
                             <label for="todoName">Name</label>
-                            <input id="todoName" width="100%" type="text" name="name" class="form-control @error('name') is-invalid @enderror">
+                            <input value="{{ old('name') }}" id="todoName" width="100%" type="text" name="name" class="form-control @error('name') is-invalid @enderror">
                             @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="todoFormControlTextarea">Description</label>
-                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="todoFormControlTextarea" rows="3"></textarea>
+                            <textarea name="description"
+                                      class="form-control @error('description') is-invalid @enderror" id="todoFormControlTextarea"
+                                      rows="3">{{ old('description') }}</textarea>
                             @error('description')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="datepicker">Date of completing</label>
-                            <input id="datepicker" name="date" width="100%" class="@error('date') is-invalid @enderror""/>
-                            @error('date')
+                            <input value="{{ old('todo_date') }}" id="datepicker" name="todo_date" width="100%" class="@error('todo_date') is-invalid @enderror"/>
+                            @error('todo_date')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>

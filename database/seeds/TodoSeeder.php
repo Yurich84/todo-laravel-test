@@ -26,7 +26,7 @@ class TodoSeeder extends Seeder
         );
 
         $user->todos()->createMany(
-            factory(Todo::class, 9)->make()->toArray()
+            factory(Todo::class, 17)->make()->toArray()
         );
     }
 }

@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">Todo List</div>
 
+                @include('todo.filter')
+
                 <div class="card-body">
                     @include('layouts.alert')
 
@@ -15,8 +17,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Status</th>
-                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -25,10 +27,12 @@
                             <tr>
                                 <th scope="row">{{$todo->id}}</th>
                                 <td><a href="{{route('todos.show', ['todo' => $todo->id])}}">{{$todo->name}}</a></td>
-                                <td>{{$todo->status}}</td>
+                                <td width="120">{{$todo->date}}</td>
                                 <td>
                                     @if($todo->status === \App\Models\Todo::STATUS_NEW)
                                         <a href="{{route('todos.complete', ['todo' => $todo->id])}}" class="btn btn-outline-primary">Complete</a>
+                                    @else
+                                        {{ $todo->status }}
                                     @endif
                                 </td>
                                 <td>
