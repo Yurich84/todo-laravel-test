@@ -15,7 +15,7 @@
 - add database credentials
 - `php artisan key:generate`
 - `php artisan migrate --seed`
-- `php artisan serve` and open browser
+- `php artisan serve`
 - Go to **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 - Now you can register new user and test application, 
 or you can use test data 
